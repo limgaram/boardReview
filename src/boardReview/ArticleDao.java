@@ -1,6 +1,5 @@
 package boardReview;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,19 +10,28 @@ public class ArticleDao {
 	public ArticleDao() {
 
 		articles = new ArrayList<>();
-		Article a1 = new Article(1, "aa", "aa1", "익명", getCurrentDate(), 0);
-		Article a2 = new Article(2, "bb", "bb1", "익명", getCurrentDate(), 0);
-		Article a3 = new Article(3, "cc", "cc1", "익명", getCurrentDate(), 0);
+		Article a1 = new Article(1, "aa", "aa1", 1, Util.getCurrentDate(), 100, 30);
+		Article a2 = new Article(2, "bb", "bb1", 2, Util.getCurrentDate(), 30, 20);
+		Article a3 = new Article(3, "cc", "cc1", 3, Util.getCurrentDate(), 50, 40);
 
 		articles.add(a1);
 		articles.add(a2);
 		articles.add(a3);
+
+		for (int i = 1; i <= 50; i++) {
+			Article a4 = new Article();
+			a4.setId(i);
+			a4.setTitle("제목" + i);
+			a4.setBody("내용" + i);
+			a4.setMid(1);
+			articles.add(a4);
+		}
 	}
 
 	public void insertArticle(Article a) {
 		a.setId(no);
 		no++;
-		a.setRegDate(getCurrentDate());
+		a.setRegDate(Util.getCurrentDate());
 
 		articles.add(a);
 	}
@@ -59,14 +67,6 @@ public class ArticleDao {
 
 	public ArrayList<Article> getArticles() {
 		return articles;
-	}
-
-	private static String getCurrentDate() {
-		SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd");
-		Date time = new Date();
-		String time1 = format1.format(time);
-
-		return time1;
 	}
 
 }

@@ -1,25 +1,36 @@
+//데이터 구조화 클래스 - DTO, VO
 package boardReview;
 
 public class Article {
-	int id;
-	String title;
-	String body;
-	String nickname;
-	String regDate;
-	int hit;
+	private int id;
+	private String title;
+	private String body;
+	private String regDate;
+	private int mid;
+	private int hit;
+	private int likeCnt;
 
 	public Article() {
 
 	}
 
-	public Article(int id, String title, String body, String nickname, String regDate, int hit) {
+	public Article(int id, String title, String body, int mid, String regDate, int hit, int likeCnt) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.body = body;
-		this.nickname = nickname;
+		this.mid = mid;
 		this.regDate = regDate;
 		this.hit = hit;
+		this.likeCnt = likeCnt;
+	}
+
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
 	}
 
 	public int getId() {
@@ -46,12 +57,12 @@ public class Article {
 		this.body = body;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public int getMid() {
+		return mid;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 
 	public String getRegDate() {
@@ -79,7 +90,7 @@ public class Article {
 		} else if (flag == 3) {
 			str = this.getTitle() + this.getBody();
 		} else {
-			str = this.getNickname();
+			// str = this.getMid() + "";
 
 		}
 
